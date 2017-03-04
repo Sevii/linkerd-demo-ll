@@ -23,14 +23,6 @@ var guest = user{Level: "3", Username: "Guest", password: "password"}
 
 var users = map[string]user{admin.Username: admin, paul.Username: paul, guest.Username: guest}
 
-func handler(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Server", "LOGIN")
-
-	jsonData, _ := json.Marshal(users[paul.Username])
-	fmt.Println(string(jsonData))
-	w.Write(jsonData)
-}
-
 func loginHandler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Server", "LOGIN")
 	var u LoginReq
@@ -50,9 +42,10 @@ func loginHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if u.Password == person.password {
+		w.Header().Set("Content-Type", "application/json")
 		jsonData, _ := json.Marshal(users[person.Username])
 		w.Write(jsonData)
-		fmt.Println("Logged in users", u)
+		fmt.Println("Logged in user", u)
 	} else {
 		http.Error(w, "Not authorized", 401)
 		fmt.Println("Bad Login request", u)
@@ -61,7 +54,6 @@ func loginHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	http.HandleFunc("/", handler)
 	http.HandleFunc("/login", loginHandler)
 	http.ListenAndServe(":8080", nil)
 }

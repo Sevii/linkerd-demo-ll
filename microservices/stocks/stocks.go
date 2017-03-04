@@ -18,7 +18,10 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	dowlevel := (rand.Float64() * 24040)
 	splevel := (rand.Float64() * 12834)
 	s := status{Dow: int(dowlevel), SP500: int(splevel)}
+
 	w.Header().Set("Server", "STOCKS")
+	w.Header().Set("Content-Type", "application/json")
+
 	jsonData, _ := json.Marshal(s)
 	fmt.Println(string(jsonData))
 	w.Write(jsonData)
