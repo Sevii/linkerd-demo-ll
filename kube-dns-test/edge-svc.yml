@@ -1,7 +1,7 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: reports-deployment
+  name: edge-deployment
 spec:
   replicas: 2 # tells deployment to run 2 pods matching the template
   template: # create pods using pod definition in this template
@@ -9,22 +9,25 @@ spec:
       # unlike pod-nginx.yaml, the name is not included in the meta data as a unique name is
       # generated from the deployment name
       labels:
-        app: reports
+        app: edge
     spec:
       containers:
-      - name: reports
-        image: quay.io/sevii/ll-reports
+      - name: edge
+        image: quay.io/sevii/ll-edge:latest
         ports:
-        - containerPort: 8055
+        - containerPort: 8080
 
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: reports
+  name: edge
 spec:
+  type: NodePort
   ports:
-    - port: 80
-      targetPort: 8055
+  - port: 8080
+    targetPort: 8080
+    protocol: TCP
+    name: http
   selector:
-    app: reports
+    app: edge

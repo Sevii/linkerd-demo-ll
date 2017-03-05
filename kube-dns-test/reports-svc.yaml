@@ -1,7 +1,7 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: weather-deployment
+  name: reports-deployment
 spec:
   replicas: 2 # tells deployment to run 2 pods matching the template
   template: # create pods using pod definition in this template
@@ -9,22 +9,22 @@ spec:
       # unlike pod-nginx.yaml, the name is not included in the meta data as a unique name is
       # generated from the deployment name
       labels:
-        app: weather
+        app: reports
     spec:
       containers:
-      - name: weather
-        image: quay.io/sevii/ll-weather
+      - name: reports
+        image: quay.io/sevii/ll-reports:latest
         ports:
-        - containerPort: 8070
+        - containerPort: 8055
 
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: weather
+  name: reports
 spec:
   ports:
     - port: 80
-      targetPort: 8070
+      targetPort: 8055
   selector:
-    app: weather
+    app: reports
