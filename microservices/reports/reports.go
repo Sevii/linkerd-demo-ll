@@ -34,6 +34,7 @@ type Report struct {
 	SP500    int
 	Temp     string
 	Weather  string
+	Time     string
 }
 
 var netClient = &http.Client{
@@ -95,7 +96,11 @@ func handler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	report := Report{Username: u.Username, Level: u.Level, Dow: s.Dow, SP500: s.SP500, Temp: weatherData.Temp, Weather: weatherData.Type}
+	today := fmt.Sprintf(time.Now().Format(time.RFC850))
+
+	report := Report{Username: u.Username, Level: u.Level, Dow: s.Dow, SP500: s.SP500, Temp: weatherData.Temp, Weather: weatherData.Type, Time: today}
+
+	fmt.Println("Created report: ", report)
 
 	w.Header().Set("Content-Type", "application/json")
 	jsonData, _ := json.Marshal(report)
@@ -104,5 +109,5 @@ func handler(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	http.HandleFunc("/report", handler)
-	http.ListenAndServe(":8080", nil)
+	http.ListenAndServe(":8055", nil)
 }
