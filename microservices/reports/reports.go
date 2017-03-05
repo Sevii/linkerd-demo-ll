@@ -8,8 +8,8 @@ import (
 )
 
 const (
-	weatherUrl = "http://localhost:8070"
-	stocksUrl  = "http://localhost:8075"
+	weatherUrl = "http://weather"
+	stocksUrl  = "http://stocks"
 )
 
 type weather struct {

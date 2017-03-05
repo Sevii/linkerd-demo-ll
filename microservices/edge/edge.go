@@ -13,8 +13,8 @@ import (
 )
 
 const (
-	loginUrl   = "http://localhost:8050/login"
-	reportsUrl = "http://localhost:8055/report"
+	loginUrl   = "http://login/login"
+	reportsUrl = "http://reports/report"
 )
 
 type user struct {
