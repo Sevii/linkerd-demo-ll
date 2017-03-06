@@ -4,6 +4,8 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"time"
+	"expvar"
 )
 
 type user struct {
@@ -53,7 +55,17 @@ func loginHandler(w http.ResponseWriter, r *http.Request) {
 
 }
 
+func logExpvars() {
+	for true {
+		expvar.Do(func(variable expvar.KeyValue) {
+			fmt.Printf("expvar.Key: %s expvar.Value: %s \n", variable.Key, variable.Value)
+		})
+		time.Sleep(time.Second * 5)
+	}
+}
+
 func main() {
+	go logExpvars()
 	http.HandleFunc("/login", loginHandler)
 	http.ListenAndServe(":8050", nil)
 }

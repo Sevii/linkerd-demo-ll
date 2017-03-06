@@ -5,6 +5,7 @@ import (
 	"encoding/base64"
 	"encoding/json"
 	"errors"
+	"expvar"
 	"fmt"
 	"html/template"
 	"net/http"
@@ -99,7 +100,7 @@ func checkAuth(w http.ResponseWriter, r *http.Request) (user, error) {
 	}
 	userName := pair[0]
 	password := pair[1]
-	fmt.Printf("Password: %s, Username: %s \n", userName, password)
+	fmt.Println("Password: %s, Username: %s \n", userName, password)
 	return getLogin(userLogin{Password: password, Username: userName})
 }
 
@@ -125,6 +126,16 @@ func handler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
+	go logExpvars()
 	http.HandleFunc("/", handler)
 	http.ListenAndServe(":8080", nil)
+}
+
+func logExpvars() {
+	for true {
+		expvar.Do(func(variable expvar.KeyValue) {
+			fmt.Println("expvar.Key: %s expvar.Value: %s \n", variable.Key, variable.Value)
+		})
+		time.Sleep(time.Second * 5)
+	}
 }

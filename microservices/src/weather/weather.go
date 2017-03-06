@@ -2,10 +2,12 @@ package main
 
 import (
 	"encoding/json"
+	"expvar"
 	"fmt"
 	"math/rand"
 	"net/http"
 	"strconv"
+	"time"
 )
 
 var weathers [5]string = [5]string{"Sunny", "Rainy", "Smoggy", "Thundersnow", "Drizzly"}
@@ -28,7 +30,17 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("Dispatched weather data: ", weather)
 }
 
+func logExpvars() {
+	for true {
+		expvar.Do(func(variable expvar.KeyValue) {
+			fmt.Printf("expvar.Key: %s expvar.Value: %s \n", variable.Key, variable.Value)
+		})
+		time.Sleep(time.Second * 5)
+	}
+}
+
 func main() {
+	go logExpvars()
 	http.HandleFunc("/", handler)
 	http.ListenAndServe(":8070", nil)
 }

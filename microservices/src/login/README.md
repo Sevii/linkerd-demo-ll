@@ -8,4 +8,4 @@ docker run -p 8080:8080 ll/login
 
 
 Test with:
-http POST localhost:8080/login Username=Stern Password=mrpaulstern
+http POST localhost:8050/login Username=Stern Password=mrpaulstern
