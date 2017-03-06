@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: reports
-        image: quay.io/sevii/ll-reports:latest
+        image: quay.io/sevii/ll-report:latest
         ports:
         - containerPort: 8055
 
