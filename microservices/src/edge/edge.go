@@ -5,8 +5,9 @@ import (
 	"encoding/base64"
 	"encoding/json"
 	"errors"
-	"expvar"
 	"fmt"
+	"github.com/prometheus/client_golang/prometheus"
+	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"html/template"
 	"net/http"
 	"strings"
@@ -126,16 +127,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	go logExpvars()
-	http.HandleFunc("/", handler)
+	http.HandleFunc("/", prometheus.InstrumentHandlerFunc("Edge", handler))
+	http.Handle("/metrics", promhttp.Handler())
 	http.ListenAndServe(":8080", nil)
-}
-
-func logExpvars() {
-	for true {
-		expvar.Do(func(variable expvar.KeyValue) {
-			fmt.Println("expvar.Key: %s expvar.Value: %s \n", variable.Key, variable.Value)
-		})
-		time.Sleep(time.Second * 5)
-	}
 }

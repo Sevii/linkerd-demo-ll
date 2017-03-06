@@ -5,7 +5,8 @@ import (
 	"fmt"
 	"net/http"
 	"time"
-	"expvar"
+	"github.com/prometheus/client_golang/prometheus"
+	"github.com/prometheus/client_golang/prometheus/promhttp"
 )
 
 const (
@@ -108,17 +109,9 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	w.Write(jsonData)
 }
 
-func logExpvars() {
-	for true {
-		expvar.Do(func(variable expvar.KeyValue) {
-			fmt.Printf("expvar.Key: %s expvar.Value: %s \n", variable.Key, variable.Value)
-		})
-		time.Sleep(time.Second * 5)
-	}
-}
 
 func main() {
-	go logExpvars()
-	http.HandleFunc("/report", handler)
+	http.HandleFunc("/report", prometheus.InstrumentHandlerFunc("Reports", handler))
+	http.Handle("/metrics", promhttp.Handler())
 	http.ListenAndServe(":8055", nil)
 }
