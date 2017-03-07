@@ -25,8 +25,8 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: status.podIP
-        - name: http_proxy
-          value: $(NODE_NAME):4140
+        - name: HTTP_PROXY
+          value: "l5d:4140"
 
 ---
 apiVersion: v1
