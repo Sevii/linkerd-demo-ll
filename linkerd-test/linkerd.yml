@@ -30,7 +30,6 @@ data:
         /srv        => /#/io.l5d.k8s/default/http;
         /host       => /srv;
         /svc        => /host;
-        /host/world => /srv/world-v1;
       interpreter:
         kind: default
         transformers:

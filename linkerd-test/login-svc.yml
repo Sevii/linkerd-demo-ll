@@ -39,7 +39,11 @@ metadata:
     prometheus.io/scrape: "true"
 spec:
   ports:
-    - port: 80
+    - name: http
+      port: 80
+      targetPort: 8050
+    - name: external
+      port: 80
       targetPort: 8050
   selector:
     app: login
