@@ -45,6 +45,8 @@ data:
       label: incoming
       dtab: |
         /srv        => /#/io.l5d.k8s/default/http;
+        /host       => /srv;
+        /svc        => /host;        
       interpreter:
         kind: default
         transformers:
