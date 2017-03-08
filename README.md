@@ -59,6 +59,6 @@ https://coreos.com/blog/monitoring-kubernetes-with-prometheus.html
 The docker containers used for this demo are hosted at http://quay.io/sevii. They can be built from source using the build.sh file in each microservice folder. This file ensure that the go compiler target linux when it creates the binary. The binary is then added to a docker container. 
 
 ## References
-[1] https://github.com/kubernetes/minikube/issues/757
-[2] https://github.com/prometheus/client_golang/tree/master/prometheus
+* [1] https://github.com/kubernetes/minikube/issues/757
+* [2] https://github.com/prometheus/client_golang/tree/master/prometheus
 
