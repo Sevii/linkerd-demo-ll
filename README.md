@@ -1,6 +1,6 @@
 #Linkerd-demo-ll
 
-Linkerd-demo-ll is a demo comparing kube-dns and linkerd. Linkderd (linkerd.io) is a proxy which adds service discovery, routing and failure handling to services. It integrates with kubernetes for service discovery. 
+Linkerd-demo-ll is a demo comparing kube-dns and linkerd. Linkderd (http://linkerd.io) is a proxy which adds service discovery, routing and failure handling to services. It integrates with kubernetes for service discovery. 
 
 
 ##Microservices
@@ -46,9 +46,18 @@ The minikube-linkerd-test contains the kubernetes manifests to setup a functiona
 * Microservice service definitions
 * Linkerd daemonset
 
+## Prometheus
+Prometheus is setup so that we have a stable platform to compare metrics on. Linkerd provides its own metrics collection and dashboard, but it is obviously not avaliable for kube-dns. Prometheus is configured to perform scraping jobs against the kubernetes services, pulling both node metrics and pod intrementation metrics. The microservice http endpoints are instrumented using the prometheus go libraries [2]. 
 
+Instrumenting:
+http://the-hobbes.github.io/update/prometheus/metrics/instrumentation/monitoring/2016/03/27/instrumenting-with-prometheus.html
+
+Configuring prometheus inside kubernetes:
+https://coreos.com/blog/monitoring-kubernetes-with-prometheus.html
 
 
 
 References
 [1] https://github.com/kubernetes/minikube/issues/757
+[2] https://github.com/prometheus/client_golang/tree/master/prometheus
+
