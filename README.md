@@ -7,11 +7,11 @@ Linkerd-demo-ll is a demo comparing kube-dns and linkerd. Linkderd (linkerd.io) 
 
 The microservices directory contains the microservices used in this demo.
 
-Edge: ui templates, takes public traffic
-Login: verifies user logins
-Reports: generates reports
-Weather: produces weather data
-Stock: produces stocks data
+* Edge: ui templates, takes public traffic
+* Login: verifies user logins
+* Reports: generates reports
+* Weather: produces weather data
+* Stock: produces stocks data
 
 
 ![ScreenShot](https://github.com/Sevii/linkerd-demo-ll/blob/master/Graph.png)
