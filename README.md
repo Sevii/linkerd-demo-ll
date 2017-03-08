@@ -49,10 +49,10 @@ The minikube-linkerd-test contains the kubernetes manifests to setup a functiona
 ## Prometheus
 Prometheus is setup so that we have a stable platform to compare metrics on. Linkerd provides its own metrics collection and dashboard, but it is obviously not avaliable for kube-dns. Prometheus is configured to perform scraping jobs against the kubernetes services, pulling both node metrics and pod intrementation metrics. The microservice http endpoints are instrumented using the prometheus go libraries [2]. 
 
-Instrumenting:
+### Instrumenting
 http://the-hobbes.github.io/update/prometheus/metrics/instrumentation/monitoring/2016/03/27/instrumenting-with-prometheus.html
 
-Configuring prometheus inside kubernetes:
+### Configuring prometheus inside kubernetes
 https://coreos.com/blog/monitoring-kubernetes-with-prometheus.html
 
 ## Container Hosting
