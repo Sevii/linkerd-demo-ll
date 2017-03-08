@@ -1,6 +1,6 @@
 #Linkerd-demo-ll
 
-Linkerd-demo-ll is a demo comparing kube-dns and linkerd. Linkderd (http://linkerd.io) is a proxy which adds service discovery, routing and failure handling to services. It integrates with kubernetes for service discovery. 
+Linkerd-demo-ll is a demo comparing kube-dns and linkerd with a slightly complicated microservice graph. Linkderd (http://linkerd.io) is a proxy which adds service discovery, routing and failure handling to services. It integrates with kubernetes for service discovery. 
 
 
 ##Microservices
