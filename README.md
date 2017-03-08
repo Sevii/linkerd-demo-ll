@@ -20,20 +20,20 @@ Stock: produces stocks data
 
 ## kube-dns-test
 
-The kube-dns-test folder contains the kubernetes manifests to setup a functional version of the system using kube-dns for discovery. It contains:
+The kube-dns-test folder contains the kubernetes manifests to setup a functional version of the system using kube-dns for discovery.
 
 ###Contents
-Prometheus
-Microservice service definitions
+* Prometheus
+* Microservice service definitions
 
 ## linkerd-test
 
 The linkerd-test folder contains the kubernetes manifests to setup a functional version of the system using linkerd for discovery. Do not use this config inside minikube[1].
 
 ###Contents
-Prometheus
-Microservice service definitions
-Linkerd daemonset
+* Prometheus
+* Microservice service definitions
+* Linkerd daemonset
 
 
 ## minikube-linkerd-test
@@ -42,9 +42,9 @@ The minikube-linkerd-test contains the kubernetes manifests to setup a functiona
 
 ###Contents
 
-Prometheus
-Microservice service definitions
-Linkerd daemonset
+* Prometheus
+* Microservice service definitions
+* Linkerd daemonset
 
 
 
