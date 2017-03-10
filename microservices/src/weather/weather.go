@@ -2,14 +2,12 @@ package main
 
 import (
 	"encoding/json"
-	"expvar"
 	"fmt"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"math/rand"
 	"net/http"
 	"strconv"
-	"time"
 )
 
 var weathers [5]string = [5]string{"Sunny", "Rainy", "Smoggy", "Thundersnow", "Drizzly"}
