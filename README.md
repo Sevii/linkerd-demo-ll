@@ -3,7 +3,7 @@
 Linkerd-demo-ll is a demo comparing kube-dns and linkerd with a slightly complicated microservice graph. Linkderd (http://linkerd.io) is a proxy which adds service discovery, routing and failure handling to services. It integrates with kubernetes for service discovery. 
 
 
-##Microservices
+## Microservices
 
 The microservices directory contains the microservices used in this demo.
 
@@ -22,7 +22,7 @@ The microservices directory contains the microservices used in this demo.
 
 The kube-dns-test folder contains the kubernetes manifests to setup a functional version of the system using kube-dns for discovery.
 
-###Contents
+### Contents
 * Prometheus
 * Microservice service definitions
 
@@ -30,7 +30,7 @@ The kube-dns-test folder contains the kubernetes manifests to setup a functional
 
 The linkerd-test folder contains the kubernetes manifests to setup a functional version of the system using linkerd for discovery. Do not use this config inside minikube[1].
 
-###Contents
+### Contents
 * Prometheus
 * Microservice service definitions
 * Linkerd daemonset
@@ -40,7 +40,7 @@ The linkerd-test folder contains the kubernetes manifests to setup a functional 
 
 The minikube-linkerd-test contains the kubernetes manifests to setup a functional version of the system using linkerd for discovery inside of minikube. 
 
-###Contents
+### Contents
 
 * Prometheus
 * Microservice service definitions
